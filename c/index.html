@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>756+ Canais ao Vivo Grátis | Pirate TV</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" href="../favicon.png" type="image/png">
+  <style>
+    :root{{--bg:#0c0c0c;--card:#161616;--txt:#f5f5f5;--mut:#9a9a9a;--acc:#e50914}}
+    *{{box-sizing:border-box;margin:0;padding:0}}
+    body{{background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh;display:flex;flex-direction:column}}
+    header{{display:flex;align-items:center;gap:16px;padding:14px 22px;border-bottom:1px solid #222}}
+    header img{{height:38px}}
+    header nav a{{color:var(--txt);text-decoration:none;margin-left:18px;font-size:.9rem;font-weight:600;letter-spacing:.04em}}
+    header nav a:hover{{color:var(--acc)}}
+    .wrap{{max-width:1200px;margin:0 auto;padding:22px;width:100%}}
+    h1{{font-size:1.4rem;margin-bottom:6px}}
+    .sub{{color:var(--mut);font-size:.9rem;margin-bottom:18px}}
+    .sub a{{color:var(--acc);text-decoration:none}}
+    #q{{width:100%;padding:12px 16px;border-radius:10px;border:1px solid #333;background:#121212;color:var(--txt);font-size:1rem;margin-bottom:14px;outline:none}}
+    #q:focus{{border-color:var(--acc)}}
+    #chips{{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}}
+    .chip{{padding:7px 13px;border-radius:999px;background:#1a1a1a;border:1px solid #2c2c2c;color:var(--mut);font-size:.83rem;cursor:pointer;user-select:none}}
+    .chip.on{{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:600}}
+    .grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}}
+    .card{{background:var(--card);border:1px solid #222;border-radius:12px;padding:14px 10px;text-align:center;text-decoration:none;color:var(--txt);transition:transform .12s,border-color .12s}}
+    .card:hover{{transform:translateY(-3px);border-color:var(--acc)}}
+    .card img{{max-width:76px;max-height:48px;object-fit:contain;margin-bottom:8px}}
+    .card b{{display:block;font-size:.86rem;line-height:1.25;margin-bottom:4px}}
+    .card span{{color:var(--mut);font-size:.72rem}}
+    footer{{margin-top:auto;padding:26px;text-align:center;color:#555;font-size:.8rem}}
+    .count{{color:var(--mut);font-size:.85rem;margin-bottom:10px}}
+  </style>
+</head>
+<body>
+<header>
+  <a href="../index.html"><img src="../piratetv.png" alt="Pirate TV"></a>
+  <nav><a href="../index.html">INÍCIO</a><a href="index.html">CANAIS</a><a href="../rebel.m3u" download>PLAYLIST M3U</a></nav>
+</header>
+<div class="wrap">
+  <h1>Canais ao vivo</h1>
+  <p class="sub">Clica num canal para ver no browser — desporto em <a href="#" data-cat="Desportos">Desportos</a>. Também podes descarregar a <a href="../rebel.m3u" download>playlist M3U</a> para VLC/TiviMate.</p>
+  <input id="q" type="search" placeholder="🔍 Procurar canal… (ex: sport tv, rtp, benfica)" autocomplete="off">
+  <div id="chips"></div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid"></div>
+</div>
+<footer>Pirate TV &copy; 2026 — canais agregados de fontes públicas.</footer>
+<script>
+var D={{canais:[],cats:[]}}, catAtiva=0, q='';
+function esc(s){{return String(s==null?'':s).replace(/[&<>"']/g,function(c){{return{{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}}[c]}})}}
+fetch('../canais.json').then(function(r){{return r.json()}}).then(function(d){{
+  D.canais=d.channels||[]; D.cats=d.categories||[];
+  var chips=document.getElementById('chips');
+  var ord=D.cats.filter(function(c){{return D.canais.some(function(x){{return (x.categories||[]).indexOf(c.id)>=0}})}});
+  ord=[{id:0,name:'Todos'}].concat(ord);
+  chips.innerHTML=ord.map(function(c){{return '<span class="chip'+(c.id===0?' on':'')+'" data-id="'+c.id+'">'+esc(c.name)+'</span>'}}).join('');
+  chips.addEventListener('click',function(e){{
+    var t=e.target.closest('.chip'); if(!t)return;
+    catAtiva=+t.dataset.id;
+    [].forEach.call(chips.children,function(ch){{ch.classList.toggle('on',+ch.dataset.id===catAtiva)}});
+    render();
+  }});
+  document.getElementById('q').addEventListener('input',function(e){{q=e.target.value.toLowerCase().trim();render()}});
+  document.querySelector('[data-cat]').addEventListener('click',function(e){{e.preventDefault();var chip=chips.querySelector('[data-id="1"]');if(chip)chip.click();}});
+  render();
+}});
+function cats(c){{return (c.categories||[]).map(function(id){{var x=D.cats.find(function(y){{return y.id===id}});return x?x.name:''}}).filter(Boolean)}}
+function logoUrl(c){{var im=c.image||'';return im&&im.indexOf('http')!==0?'../'+im:im}}
+function render(){{
+  var list=D.canais.filter(function(c){{
+    if(catAtiva&&(c.categories||[]).indexOf(catAtiva)<0)return false;
+    if(q&&String(c.name).toLowerCase().indexOf(q)<0)return false;
+    return true;
+  }});
+  list.sort(function(a,b){{return (b.destaque?1:0)-(a.destaque?1:0)||String(a.name).localeCompare(String(b.name))}});
+  document.getElementById('count').textContent=list.length+' canal(is)';
+  document.getElementById('grid').innerHTML=list.map(function(c){{
+    var lu=logoUrl(c), im=lu?'<img src="'+esc(lu)+'" loading="lazy" onerror="this.style.display=\'none\'">':'';
+    return '<a class="card" href="'+esc(c.id)+'.html">'+im+'<b>'+esc(c.name)+'</b><span>'+esc(cats(c).slice(0,2).join(' · '))+'</span></a>';
+  }}).join('')||'<p style="color:var(--mut)">Nada encontrado.</p>';
+}}
+</script>
+</body>
+</html>

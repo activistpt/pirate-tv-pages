@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assistir Jazz TV ao Vivo Online Grátis em HD | Pirate TV</title>
+  <meta name="description" content="Assista Jazz TV ao vivo online grátis em HD no Pirate TV. Sem cadastro.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#0c0c0c">
+  <link rel="icon" href="../favicon.png" type="image/png">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/channel-page.css">
+  <script src="../assets/hls.min.js"></script>
+  <script src="../assets/mpegts.min.js"></script>
+  <style>
+    .channel-player-wrap{position:relative;width:100%;padding-top:56.25%;background:#000;border-radius:12px;overflow:hidden}
+    .channel-player-wrap video,.channel-player-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+    .player-loading{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:1.2rem;z-index:10;text-align:center}
+    .player-error{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#ff4444;font-size:1rem;z-index:10;padding:20px;background:rgba(0,0,0,.8);border-radius:8px;text-align:center}
+    .btn-copy{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;background:#1f1f1f;color:#fff;border:1px solid #333;cursor:pointer;font-size:.9rem}
+    .btn-copy:hover{background:#2a2a2a}
+</style>
+</head>
+<body class="channel-page">
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="header-logo-link" aria-label="Pirate TV - página inicial">
+        <img src="../piratetv.png" alt="Pirate TV" class="header-logo-img">
+      </a>
+      <nav aria-label="Navegação principal">
+        <a href="../index.html">INÍCIO</a>
+        <a href="index.html">CANAIS</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <div class="channel-shell">
+      <section class="channel-hero" aria-labelledby="channel-title">
+        <nav class="channel-breadcrumbs" aria-label="Breadcrumb">
+          <a href="../index.html">INÍCIO</a><span>/</span>
+          <a href="index.html">CANAIS</a><span>/</span>
+          <strong>Jazz TV</strong>
+        </nav>
+        <div class="channel-heading">
+          <div class="channel-info">
+            <p class="channel-kicker">Internacional</p>
+            <h1 id="channel-title">Jazz TV ao vivo</h1>
+            <div class="badges-row"><span class="badge">Internacional</span></div>
+          </div>
+        </div>
+      </section>
+      <section class="watch-panel" aria-labelledby="watch-title">
+        <div class="watch-panel-head">
+          <h2 id="watch-title">Jazz TV - Player (HD)</h2>
+          <span class="live-pill">AO VIVO</span>
+        </div>
+        <div class="channel-player-wrap">
+          <div class="player-loading" id="player-loading">A carregar player...</div>
+          <video id="video-player" controls autoplay playsinline style="display:none"></video>
+          <iframe id="iframe-player" style="display:none" allowfullscreen allow="autoplay; fullscreen" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+        </div>
+        <div class="channel-actions" style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
+          <a href="index.html" style="display:inline-flex;align-items:center;padding:10px 16px;border-radius:8px;background:#e50914;color:#fff;text-decoration:none;font-size:.9rem">EXPLORAR OUTROS CANAIS</a>
+          <button class="btn-copy" id="btn-copy" type="button">📋 Copiar URL do stream (VLC)</button>
+        </div>
+      </section>
+      <section class="related-channels" aria-labelledby="related-title">
+        <div class="related-channels-head"><h2 id="related-title">CANAIS RELACIONADOS</h2></div>
+        <div class="related-channels-grid">
+          <a class="related-channel-card" href="8-kanal-vitebsk-s.html"><img src="https://i.imgur.com/tjwBSTF.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><strong>8 Kanal Vitebsk Ⓢ</strong><span>Internacional</span></a>
+          <a class="related-channel-card" href="1mus.html"><img src="https://i.imgur.com/PozF9MT.png" alt="" loading="lazy" onerror="this.style.display='none'"><strong>1Mus</strong><span>Internacional</span></a>
+          <a class="related-channel-card" href="servus-tv-g.html"><img src="https://i.imgur.com/zDWhSxq.png" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Servus TV Ⓖ</strong><span>Internacional</span></a>
+          <a class="related-channel-card" href="tropoja.html"><img src="https://i.imgur.com/D3hNOVS.png" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Tropoja</strong><span>Internacional</span></a>
+          <a class="related-channel-card" href="azstartv.html"><img src="https://i.imgur.com/di3XX5L.png" alt="" loading="lazy" onerror="this.style.display='none'"><strong>AzStarTV</strong><span>Internacional</span></a>
+          <a class="related-channel-card" href="belarus-5-internet.html"><img src="https://i.imgur.com/rzPQ9Iz.png" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Беларусь 5 Интернет</strong><span>Internacional</span></a>
+          <a class="related-channel-card" href="belarus-2.html"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Belarus_2_logo.svg/742px-Belarus_2_logo.svg.png" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Беларусь 2</strong><span>Internacional</span></a>
+          <a class="related-channel-card" href="belarus-1.html"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Belarus_1_logo.svg/742px-Belarus_1_logo.svg.png" alt="" loading="lazy" onerror="this.style.display='none'"><strong>Беларусь 1</strong><span>Internacional</span></a>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="../piratetv.png" alt="Pirate TV Logo" class="footer-logo-img" style="height:44px;width:auto;margin-bottom:20px">
+        <p class="footer-tagline">Pirate TV: O melhor portal para assistir TV online grátis.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Navegação</h5>
+          <a href="../index.html">INÍCIO</a>
+          <a href="index.html">CANAIS</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom" style="text-align:center;padding-top:32px;border-top:1px solid rgba(255,255,255,.05);margin-top:40px;color:#555;font-size:.8rem">
+      <p>&copy; 2026 Pirate TV - Todos os direitos reservados.</p>
+    </div>
+  </footer>
+  <script>
+  (function(){
+    var url = "https://stream.nasatv.com.mk/jazztv/hls/jazztv_live.m3u8";
+    var loading = document.getElementById('player-loading');
+    var video = document.getElementById('video-player');
+    var iframe = document.getElementById('iframe-player');
+    var btn = document.getElementById('btn-copy');
+    function showErr(msg){ if(loading){ loading.innerHTML='<div class="player-error">'+msg+'</div>'; loading.style.display='block'; } }
+    if(btn && url){
+      btn.addEventListener('click', function(){
+        var t = url;
+        if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(t); btn.textContent='✅ URL copiado!'; }
+        else { window.prompt('Copia o URL:', t); }
+        setTimeout(function(){ btn.textContent='📋 Copiar URL do stream (VLC)'; },2000);
+      });
+    } else if(btn) { btn.style.display='none'; }
+    if (!url) { showErr('Este canal não tem stream disponível de momento.'); return; }
+    if (url.indexOf('http://') === 0) {
+      showErr('Este stream é apenas HTTP (não pode abrir dentro de páginas seguras). Usa o botão “Copiar URL” e abre no VLC.');
+      return;
+    }
+    var isPHP = url.indexOf('.php') !== -1;
+    var isTS  = url.indexOf('geoiptv.me') !== -1 || url.indexOf(':8880') !== -1;
+    var isHLS = url.indexOf('.m3u8') !== -1;
+    if (isPHP) {
+      loading.style.display='none'; iframe.style.display='block';
+      iframe.src = url; iframe.setAttribute('allow','autoplay; fullscreen');
+    } else if (isTS && typeof mpegts !== 'undefined' && mpegts.getFeatureList().mseLivePlayback) {
+      loading.style.display='none'; video.style.display='block';
+      var p = mpegts.createPlayer({type:'mse',url:url,isLive:true,enableStashBuffer:true,stashInitialSize:128});
+      p.attachMediaElement(video);
+      p.on(mpegts.Events.ERROR,function(){ showErr('Erro no stream.'); video.style.display='none'; });
+      p.load();
+    } else if (isHLS && typeof Hls !== 'undefined' && Hls.isSupported()) {
+      loading.style.display='none'; video.style.display='block';
+      var hls = new Hls({enableWorker:true,lowLatencyMode:true,backBufferLength:90});
+      hls.loadSource(url); hls.attachMedia(video);
+      hls.on(Hls.Events.ERROR,function(e,d){ if(d.fatal){ showErr('Erro no stream.'); video.style.display='none'; } });
+    } else if (isHLS && video.canPlayType('application/vnd.apple.mpegurl')) {
+      loading.style.display='none'; video.style.display='block';
+      video.src = url; video.play().catch(function(){});
+    } else {
+      loading.style.display='none'; iframe.style.display='block'; iframe.src = url;
+    }
+  })();
+  </script>
+</body>
+</html>
